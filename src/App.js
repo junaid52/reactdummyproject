@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
-
+import CardList from './components/CardList';
+import {useState, useEffect} from 'react';
 function App() {
+  const [dataArray, setDataArray] = useState([]);
+  useEffect(() => {
+    fetch('https://api.atwrap.ae/products')
+    .then(res => {
+      if(!res.ok) {
+        throw new Error('error');
+      }
+      return res.json();
+    })
+    .then(data => {
+      
+      setDataArray(data);
+    })
+  }, [])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2 className="heading">Shop Products</h2>
+      <div className="grid-container">
+        {
+          dataArray.length !== 0 && <CardList dataArray={dataArray} />
+        }
+        
+      </div>
+      
     </div>
   );
 }

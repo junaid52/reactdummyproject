@@ -1,0 +1,21 @@
+.card {
+    color: #705B4C;
+}
+.img-container img {
+    max-width: 100%;
+    height: auto;
+}
+.btn-container {
+    display: flex;
+    column-gap: 10px;
+}
+.btn-container button {
+    padding: 10px 40px;
+    background-color: #D5CCB5;
+    color: #705B4C;
+    border: 1px solid #D5CCB5;
+}
+h3 {
+    display: flex;
+    justify-content: space-between;
+}
